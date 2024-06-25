@@ -28,12 +28,6 @@ function App() {
   const aoDigitar = (e) => {
     setObjProduto({ ...objProduto, [e.target.name]: e.target.value })
   }
-
-  useEffect(() => {
-    fetch("http://localhost:8080/produtos/listar")
-      .then(retorno => retorno.json())
-      .then(retorno_convertido => setProdutos(retorno_convertido))
-  }, [])
   
   const cadastrar = () => {
     fetch("http://localhost:8080/produtos/cadastrar", {
