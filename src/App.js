@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Formulario from './Formulario';
-import Tabela from './Tabela';
+import Formulario from './Formulario/Formulario';
+import Tabela from './Tabela/Tabela';
 
 function App() {
 
