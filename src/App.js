@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Footer from './Footer';
-import Formulario from './Formulario';
+import Formulario from './Formulario/Formulario';
 import Menu from './Menu';
-import Tabela from './Tabela';
+import Tabela from './Tabela/Tabela';
 
 
 
