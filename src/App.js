@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Formulario from './Formulario/Formulario';
-import Tabela from './Tabela/Tabela';
+import Footer from './Footer';
+import Formulario from './Formulario';
+import Menu from './Menu';
+import Tabela from './Tabela';
+
+
 
 function App() {
 
@@ -16,6 +20,7 @@ function App() {
   const [btnCadastrar, setBtnCadastrar] = useState(true)
   const [produtos, setProdutos] = useState([])
   const [objProduto, setObjProduto] = useState(produto)
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   //useEffect
   useEffect(() => {
@@ -28,7 +33,7 @@ function App() {
   const aoDigitar = (e) => {
     setObjProduto({ ...objProduto, [e.target.name]: e.target.value })
   }
-  
+
   const cadastrar = () => {
     fetch("http://localhost:8080/produtos/cadastrar", {
       method: "post",
@@ -49,7 +54,7 @@ function App() {
         }
       })
   }
-  
+
   const alterar = () => {
     fetch("http://localhost:8080/produtos/alterar", {
       method: "put",
@@ -75,7 +80,7 @@ function App() {
         }
       })
   }
-  
+
   const remover = () => {
     fetch(`http://localhost:8080/produtos/remover/${objProduto.id}`, {
       method: "delete",
@@ -109,9 +114,21 @@ function App() {
     setBtnCadastrar(false)
   }
 
+  function menuShow() {
+    let menuMobile = document.querySelector('.mobile-menu');
+    if (menuMobile.classList.contains('open')) {
+        menuMobile.classList.remove('open');
+        document.querySelector('.icon').src = "assets/img/menu_white_36dp.svg";
+    } else {
+        menuMobile.classList.add('open');
+        document.querySelector('.icon').src = "assets/img/close_white_36dp.svg";
+    }
+}
+
   // Retorno
   return (
     <div>
+      <Menu />
       <Formulario
         botao={btnCadastrar}
         eventoTeclado={aoDigitar}
@@ -120,13 +137,16 @@ function App() {
         cancelar={limparFormulario}
         remover={remover}
         alterar={alterar}
+        menuIsOpen={menuIsOpen}
+        setMenuIsOpen={setMenuIsOpen}
       />
       <Tabela
         vetor={produtos}
         selecionar={selecionarProduto}
       />
+      <Footer />
     </div>
-  );
+  )
 }
 
 export default App;
