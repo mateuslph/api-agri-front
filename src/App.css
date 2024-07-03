@@ -1,14 +1,52 @@
-form {
-  width: 500px;
-  margin: 30px auto;
+.borda-formulario, .borda-tabela {
+  display: flex;
+  justify-content: center;
+}
+
+.borda-tabela {
+  padding-bottom: 120px;
+}
+
+.borda-formulario>div {
+  border-top: solid #333;
+  border-right: solid #333;
+  border-left: solid #333;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 35px;
+  margin-top: 80px;  
+  width: 685px;
+}
+
+.borda-tabela>div {
+  border-right: solid #333;
+  border-bottom: solid #333;
+  border-left: solid #333;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 20px 35px;
+  width: 685px;
+}
+
+.borda-tabela div>div {
+  overflow-x: scroll;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.form {
   text-align: center;
 }
 
-form input {
+form input, form input[type="button"] {
   margin-bottom: 5px;
 }
 
 form input[type="button"] {
-  margin: 0 5px;
   width: 115px;
+  margin: 0 5px;
+}
+
+table {
+  text-wrap: nowrap;
 }
