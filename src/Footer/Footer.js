@@ -1,7 +1,7 @@
 import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 import FooterList from './FooterList';
-import SocialMediaLink from './SocialMediaLink';
+import SocialMediaLink from '../SocialMediaLink';
 
 
 function Footer() {

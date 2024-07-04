@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import Formulario from './Formulario/Formulario';
 import Menu from './Menu';
 import Tabela from './Tabela/Tabela';
@@ -113,18 +113,7 @@ function App() {
     setObjProduto(produtos[indice])
     setBtnCadastrar(false)
   }
-
-  function menuShow() {
-    let menuMobile = document.querySelector('.mobile-menu');
-    if (menuMobile.classList.contains('open')) {
-        menuMobile.classList.remove('open');
-        document.querySelector('.icon').src = "assets/img/menu_white_36dp.svg";
-    } else {
-        menuMobile.classList.add('open');
-        document.querySelector('.icon').src = "assets/img/close_white_36dp.svg";
-    }
-}
-
+  
   // Retorno
   return (
     <div>
