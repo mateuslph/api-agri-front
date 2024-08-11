@@ -4,6 +4,7 @@ import Footer from './Footer/Footer';
 import Formulario from './Formulario/Formulario';
 import Menu from './Menu';
 import Tabela from './Tabela/Tabela';
+import './reset.css';
 
 
 
