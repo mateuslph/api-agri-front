@@ -8,8 +8,9 @@ function Tabela({ vetor, selecionar }) {
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
-                                <th>Marca</th>
-                                <th>Selacionar</th>
+                                <th>Preco</th>
+                                <th>Quantidade</th>
+                                <th>Descricao</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -18,7 +19,9 @@ function Tabela({ vetor, selecionar }) {
                                     <tr key={indice}>
                                         <td>{indice + 1}</td>
                                         <td>{obj.nome}</td>
-                                        <td>{obj.marca}</td>
+                                        <td>{obj.preco}</td>
+                                        <td>{obj.quantidade}</td>
+                                        <td>{obj.descricao}</td>
                                         <td>
                                             <button
                                                 id="botao-selecionar"
