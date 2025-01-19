@@ -5,116 +5,117 @@ import Formulario from './Formulario/Formulario';
 import Menu from './Menu';
 import Tabela from './Tabela/Tabela';
 
-
-
 function App() {
-
-  // objeto prduto
   const produto = {
-    id: 0,
+    id: "",
     nome: '',
-    marca: ''
-  }
+    preco: 0,
+    quantidade: 0,
+    descricao: ''
+  };
 
-  // useState
-  const [btnCadastrar, setBtnCadastrar] = useState(true)
-  const [produtos, setProdutos] = useState([])
-  const [objProduto, setObjProduto] = useState(produto)
+  const [btnCadastrar, setBtnCadastrar] = useState(true);
+  const [produtos, setProdutos] = useState([]);
+  const [objProduto, setObjProduto] = useState(produto);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  //useEffect
   useEffect(() => {
     fetch("http://localhost:8080/produtos/listar")
       .then(retorno => retorno.json())
-      .then(retorno_convertido => setProdutos(retorno_convertido))
-  }, [])
+      .then(retorno_convertido => setProdutos(retorno_convertido));
+  }, []);
 
-  // obtendo os dados do fomulario
   const aoDigitar = (e) => {
-    setObjProduto({ ...objProduto, [e.target.name]: e.target.value })
-  }
+    setObjProduto({ ...objProduto, [e.target.name]: e.target.value });
+  };
 
-  const cadastrar = () => {
-    fetch("http://localhost:8080/produtos/cadastrar", {
-      method: "post",
-      body: JSON.stringify(objProduto),
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-      .then(retorno => retorno.json())
-      .then(retorno_convertido => {
-        if (retorno_convertido.mensagem !== undefined) {
-          alert(retorno_convertido.mensagem)
-        } else {
-          setProdutos([...produtos, retorno_convertido])
-          alert("Produto cadastrado com sucesso!")
-          limparFormulario()
+  const cadastrar = async () => {
+    try {
+      console.log("Enviando produto para o backend:", objProduto); // Log para verificar o objeto
+      const response = await fetch("http://localhost:8080/produtos/cadastrar", {
+        method: "POST",
+        body: JSON.stringify(objProduto),
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
         }
-      })
-  }
+      });
 
-  const alterar = () => {
-    fetch("http://localhost:8080/produtos/alterar", {
-      method: "put",
-      body: JSON.stringify(objProduto),
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
+      const retorno_convertido = await response.json();
+
+      if (retorno_convertido && retorno_convertido.id) {
+        setProdutos([...produtos, retorno_convertido]);
+        alert("Produto cadastrado com sucesso!");
+        limparFormulario();
+      } else {
+        alert("Erro ao cadastrar produto. Tente novamente.");
       }
-    })
-      .then(retorno => retorno.json())
-      .then(retorno_convertido => {
-        if (retorno_convertido.mensagem !== undefined) {
-          alert(retorno_convertido.mensagem)
-        } else {
-          let vetorTemp = [...produtos]
-          let indice = vetorTemp.findIndex((prod) => {
-            return prod.id === objProduto.id
-          })
-          vetorTemp[indice] = objProduto
-          setProdutos(vetorTemp)
-          alert("Produto alterado com sucesso!")
-          limparFormulario()
+    } catch (error) {
+      alert("Erro ao cadastrar produto. Tente novamente.");
+    }
+  };
+
+  const alterar = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/produtos/alterar/${objProduto.id}`, {
+        method: "PUT",
+        body: JSON.stringify(objProduto),
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
         }
-      })
-  }
+      });
 
-  const remover = () => {
-    fetch(`http://localhost:8080/produtos/remover/${objProduto.id}`, {
-      method: "delete",
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
+      const retorno_convertido = await response.json();
+
+      if (retorno_convertido && retorno_convertido.id) {
+        let vetorTemp = [...produtos];
+        let indice = vetorTemp.findIndex((prod) => prod.id === objProduto.id);
+        vetorTemp[indice] = objProduto;
+        setProdutos(vetorTemp);
+        alert("Produto alterado com sucesso!");
+        limparFormulario();
+      } else {
+        alert("Erro ao alterar produto. Tente novamente.");
       }
-    })
-      .then(retorno => retorno.json())
-      .then(retorno_convertido => {
-        alert(retorno_convertido.mensagem)
-        let vetorTemp = [...produtos]
-        let indice = vetorTemp.findIndex((prod) => {
-          return prod.id === objProduto.id
-        })
-        vetorTemp.splice(indice, 1)
-        setProdutos(vetorTemp)
-        limparFormulario()
-      })
-  }
+    } catch (error) {
+      alert("Erro ao alterar produto. Tente novamente.");
+    }
+  };
 
-  // limpar formulario
+  const remover = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/produtos/remover/${objProduto.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        }
+      });
+
+      const retorno_convertido = await response.json();
+      alert(retorno_convertido.mensagem);
+
+      let vetorTemp = [...produtos];
+      let indice = vetorTemp.findIndex((prod) => prod.id === objProduto.id);
+      vetorTemp.splice(indice, 1);
+      setProdutos(vetorTemp);
+      limparFormulario();
+    } catch (error) {
+      alert("Erro ao remover produto. Tente novamente.");
+    }
+  };
+
   const limparFormulario = () => {
-    setObjProduto(produto)
-    setBtnCadastrar(true)
-  }
+    setObjProduto(produto);
+    setBtnCadastrar(true);
+  };
 
-  // selecionar produto
   const selecionarProduto = (indice) => {
-    setObjProduto(produtos[indice])
-    setBtnCadastrar(false)
-  }
-  
-  // Retorno
+    setObjProduto(produtos[indice]);
+    setBtnCadastrar(false);
+  };
+
   return (
     <div>
       <Menu />
@@ -135,7 +136,7 @@ function App() {
       />
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;

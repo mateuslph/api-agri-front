@@ -5,21 +5,41 @@ function Formulario({ botao, eventoTeclado, cadastrar,
             <div>
                 <div>
                     <form className="form">
+                    <label htmlFor="nome" className="form-label d-flex justify-content-start">Nome:</label>
                         <input
                             type="text"
                             value={obj.nome}
                             onChange={eventoTeclado}
                             name="nome"
                             placeholder="Nome"
+                            className="form-control col-3"
+                            maxLength="50"
+                        />
+                        <label htmlFor="preco" className="form-label d-flex justify-content-start">Preço:</label>
+                        <input
+                            type="number"
+                            value={obj.preco}
+                            onChange={eventoTeclado}
+                            name="preco"
                             className="form-control"
                             maxLength="50"
                         />
+                        <label htmlFor="quantidade" className="form-label d-flex justify-content-start">Quantidade:</label>
+                        <input
+                            type="number"
+                            value={obj.quantidade}
+                            onChange={eventoTeclado}
+                            name="quantidade"
+                            className="form-control"
+                            maxLength="50"
+                        />
+                        <label htmlFor="descricao" className="form-label d-flex justify-content-start">Descrição:</label>                      
                         <input
                             type="text"
-                            value={obj.marca}
+                            value={obj.descricao}
                             onChange={eventoTeclado}
-                            name="marca"
-                            placeholder="Marca"
+                            name="descricao"
+                            placeholder="Descricao"
                             className="form-control"
                             maxLength="50"
                         />
