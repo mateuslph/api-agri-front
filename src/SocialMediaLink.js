@@ -5,7 +5,7 @@ import './Footer/Footer.css';
 function SocialMediaLink({ icon, href }) {
   return (
     <a href={href} className="footer-link text-center">
-      <FontAwesomeIcon icon={icon} />
+      <FontAwesomeIcon icon={icon} size="lg" color="white" />
     </a>
   );
 }
