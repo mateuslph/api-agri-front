@@ -3,55 +3,57 @@
   flex-direction: column;
   width: 100%;
   max-width: 500px;
-  margin: 20px auto;
+    margin: 20px auto;
   padding: 20px;
-  background-color: #e9f7eb; /* Light pastel green */
+    background-color: #FF8C00; /* Strong orange background */
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow */
   font-family: 'Arial', sans-serif; /* Replace with your preferred font */
+    border: 2px solid #FF9800; /* Vibrant orange border */
 }
 
 .formulario-container label {
   margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+    font-weight: 600; /* Slightly bolder */
+    color: #2196F3; /* Vivid blue for labels */
+    text-shadow: 1px 1px 0px #FFEB3B; /* Light yellow text shadow */
 }
 
 .formulario-container input[type="text"],
 .formulario-container textarea {
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 16px;
-  color: #555;
+    margin-bottom: 15px;
+    border: 1px solid #CCE5FF; /* Light blue border for inputs */
+    border-radius: 8px; /* Slightly larger border radius */
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    color: #333; /* Darker text color */
 }
 
 .formulario-container input[type="text"]:focus,
 .formulario-container textarea:focus {
-  border-color: #007bff; /* Example: Bootstrap primary color */
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #FF5722; /* Vivid orange border on focus */
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.7); /* Orange shadow on focus */
 }
 
 .formulario-container textarea {
   resize: vertical; /* Allow vertical resizing only */
-  min-height: 100px;
+    min-height: 120px; /* Slightly taller text area */
 }
 
 .formulario-container button {
   padding: 10px 15px;
-  background-color: #28a745; /* Example: Bootstrap success color */
+    background-color: #4CAF50; /* Green button color */
   color: white;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+    cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-.formulario-container button:hover {
-  background-color: #218838;
+.formulario-container button:hover { /* Slightly darker green on hover */
+    background-color: #367C39;
 }
