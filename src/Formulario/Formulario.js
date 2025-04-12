@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Formulario.css';
 
 function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
   const [formData, setFormData] = useState({
@@ -41,10 +42,10 @@ function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
   };
 
   return (
-    <div className="borda-formulario">
-      <div>
-        <div>
-          <form className="form">
+    <div className="formulario-container">
+      <div className="formulario-wrapper">
+        <div className="formulario-content">
+          <form className="formulario">
             <label htmlFor="nome" className="form-label d-flex justify-content-start">Nome:</label>
             <input
               type="text"
@@ -88,7 +89,7 @@ function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
                 <input
                   type="button"
                   value="Cadastrar"
-                  onClick={() => cadastrar(formData)}
+                  onClick={() => cadastrar(formData)} 
                   className="btn btn-primary"
                 />
               ) : (
