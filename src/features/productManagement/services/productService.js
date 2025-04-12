@@ -1,16 +1,8 @@
-const baseURL = 'http://localhost:8080/api/produtos';
+const baseURL = 'http://localhost:8080/api/produtos'; // Base URL for the API
 
 const productService = {
     getProducts: async () => {
-        const response = await fetch(baseURL);
-        if (!response.ok) {
-            throw new Error('Erro ao buscar produtos');
-        }
-        return response.json();
-    },
-
-    getProductById: async (id) => {
-        const response = await fetch(`${baseURL}/${id}`);
+        const response = await fetch(`${baseURL}/listar`);
         if (!response.ok) {
             throw new Error(`Erro ao buscar produto com ID ${id}`);
         }
@@ -18,7 +10,7 @@ const productService = {
     },
 
     createProduct: async (product) => {
-        const response = await fetch(baseURL, {
+        const response = await fetch(`${baseURL}/cadastrar`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +24,7 @@ const productService = {
     },
 
     updateProduct: async (product) => {
-        const response = await fetch(`${baseURL}/${product.id}`, {
+        const response = await fetch(`${baseURL}/alterar/${product.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +38,7 @@ const productService = {
     },
 
     deleteProduct: async (id) => {
-        const response = await fetch(`${baseURL}/${id}`, {
+        const response = await fetch(`${baseURL}/remover/${id}`, {
             method: 'DELETE',
         });
         if (!response.ok) {
