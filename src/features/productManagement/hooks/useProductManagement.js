@@ -62,8 +62,8 @@ const useProductManagement = () => {
     }
   };
 
-  const select = (index) => {
-    setSelectedProduct(products[index]);
+  const select = (product) => {
+    setSelectedProduct(product);
   };
 
   const clearSelected = () => {

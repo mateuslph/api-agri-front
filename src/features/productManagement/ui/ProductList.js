@@ -9,7 +9,7 @@ const ProductList = ({ vetor, selecionar }) => {
             <div className="card-body">
               <h5 className="card-title">{obj.nome}</h5>
               <p className="card-text">Preço: R$ {obj.preco}</p>
-              <button onClick={() => selecionar(index)} className="btn btn-primary">Selecionar</button>
+              <button onClick={() => selecionar(obj)} className="btn btn-primary">Selecionar</button>
             </div>
           </div>
         ))}
