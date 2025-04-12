@@ -110,4 +110,5 @@ function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
     </div>
   );
 }
+export default Formulario;
 
