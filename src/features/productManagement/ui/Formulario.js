@@ -3,42 +3,53 @@ import './Formulario.css';
 
 function Formulario({ obj, cadastrar, alterar, remover, cancelar }) {
     const [nome, setNome] = useState('');
-    const [marca, setMarca] = useState('');
+    const [preco, setPreco] = useState(0.0);
+    const [quantidade, setQuantidade] = useState(0.0);
+    const [descricao, setDescricao] = useState('');
 
     useEffect(() => {
         if (obj) {
             setNome(obj.nome || '');
-            setMarca(obj.marca || '');
+            setPreco(obj.preco || 0.0);
+            setQuantidade(obj.quantidade || 0.0);
+            setDescricao(obj.descricao || '');
         } else {
             setNome('');
-            setMarca('');
+            setPreco(0.0);
+            setQuantidade(0.0);
+            setDescricao('');
         }
     }, [obj]);
 
     const aoDigitarNome = (e) => setNome(e.target.value);
-    const aoDigitarMarca = (e) => setMarca(e.target.value);
+    const aoDigitarPreco = (e) => setPreco(parseFloat(e.target.value));
+    const aoDigitarQuantidade = (e) => setQuantidade(parseFloat(e.target.value));
+    const aoDigitarDescricao = (e) => setDescricao(e.target.value);
 
     const cadastrarOuAlterar = () => {
-        const payload = { nome, marca };
+        const payload = { nome, preco, quantidade, descricao };
         if (obj) {
-            payload.codigo = obj.codigo;
+            payload.id = obj.id;
             alterar(payload);
         } else {
             cadastrar(payload);
         }
         limparCampos();
     };
-
     const limparCampos = () => {
         setNome('');
-        setMarca('');
+        setPreco(0.0);
+        setQuantidade(0.0);
+        setDescricao('');
         cancelar();
     };
 
     return (
         <div className="formulario-container">
             <input type='text' value={nome} onChange={aoDigitarNome} placeholder='Nome do produto' className='form-control' />
-            <input type='text' value={marca} onChange={aoDigitarMarca} placeholder='Marca do produto' className='form-control' />
+            <input type='number' step='0.01' value={preco} onChange={aoDigitarPreco} placeholder='Preço do produto' className='form-control' />
+            <input type='number' step='0.01' value={quantidade} onChange={aoDigitarQuantidade} placeholder='Quantidade do produto' className='form-control' />
+            <input type='text' value={descricao} onChange={aoDigitarDescricao} placeholder='Descrição do produto' className='form-control' />
 
             <input type='button' value='Cadastrar' onClick={cadastrarOuAlterar} className='btn btn-primary' />
             <input type='button' value='Remover' onClick={() => remover(obj.codigo)} className='btn btn-danger' disabled={!obj} />
