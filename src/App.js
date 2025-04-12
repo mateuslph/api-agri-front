@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Footer from './Footer/Footer';
 import Formulario from './Formulario/Formulario';
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 import ProductList from './ProductList/ProductList';
 import useProductManagement from './hooks/useProductManagement';
 
