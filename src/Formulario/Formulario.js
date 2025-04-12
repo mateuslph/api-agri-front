@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
   const [formData, setFormData] = useState({
-    id: obj.id || '',
-    nome: obj.nome || '',
-    preco: obj.preco || 0,
-    quantidade: obj.quantidade || 0,
-    descricao: obj.descricao || '',
+    id: '',
+    nome: '',
+    preco: 0,
+    quantidade: 0,
+    descricao: '',
   });
+
+  useEffect(() => {
+    setFormData({
+      id: obj.id || '',
+      nome: obj.nome || '',
+      preco: obj.preco || 0,
+      quantidade: obj.quantidade || 0,
+      descricao: obj.descricao || '',
+    });
+  }, [obj]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
