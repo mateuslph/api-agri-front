@@ -4,7 +4,7 @@ const productService = {
     getProducts: async () => {
         const response = await fetch(`${baseURL}/listar`);
         if (!response.ok) {
-            throw new Error(`Erro ao buscar produto com ID ${id}`);
+            throw new Error(`Erro ao buscar produtos`);
         }
         return response.json();
     },
