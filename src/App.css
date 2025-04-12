@@ -1,25 +1,14 @@
-.borda-formulario, .borda-tabela {
+.form-container, .table-container {
   display: flex;
   justify-content: center;
 }
 
-/*adicionado borda com a sugestao do chatgpt*/
-.borda-formulario {
+/* Form Styles */
+.form-container {
   margin-bottom: 30px;
 }
 
-.borda-formulario > div {
-  border-top: solid #333;
-  border-right: solid #333;
-  border-left: solid #333;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  padding: 35px;
-  margin-top: 80px;  
-  width: 685px;
-}
-
-.borda-formulario > div {
+.form-content {
   border: 2px solid #333; /* Alterado para borda uniforme */
   border-radius: 20px;
   padding: 35px;
@@ -27,37 +16,17 @@
   width: 685px;
 }
 
-/*substutuido pela sugestao do chatgpt pelo de cima
-.borda-tabela>div {
-  border: 2px solid #333; 
-  border-right: solid #333;
-  border-bottom: solid #333;
-  border-left: solid #333;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 20px 35px;
-  width: 685px;
-}
-*/
-
-.borda-tabela {
+/* Table Styles */
+.table-container {
   padding-bottom: 120px;
 }
 
-.borda-tabela > div {
+.table-content {
   border: 2px solid #333; /* Alterado para borda uniforme */
   border-radius: 20px;
   padding: 20px 35px;
   width: 885px;
 }
-
-/*substutuido pela sugestao do chatgpt pelo de cima
-.borda-tabela div>div {
-  overflow-x: scroll;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}*/
-
 .form {
   text-align: center;
 }

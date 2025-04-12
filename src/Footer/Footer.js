@@ -20,10 +20,11 @@ function Footer() {
   ];
 
   return (
-    <footer className="footer">
+ <footer className="footer">
       <section id="footer-content" className="footer-content">
 
-        <section id="footer-contacts" className="column-footer">
+        <section id="footer-contacts" className="column-footer" aria-labelledby="contacts-heading">
+          <h2 id="contacts-heading" className="visually-hidden">Contact Information</h2>
           <img className='logo-empresa' src="/logo-empresa.png" alt="Descrição da imagem" />
           <p>Software desenvolvido em tempo hábil para ultrapassar concorrência.</p>
           <div id="footer-social-media">
@@ -33,13 +34,13 @@ function Footer() {
           </div>
         </section>
 
-        <section aria-label="Footer Navigation" className="column-footer">
-          <FooterList title="Blog" links={blogLinks} />
-          <FooterList title="Produtos" links={productLinks} />
+        <section aria-label="Footer Navigation" className="column-footer" aria-labelledby="blog-heading products-heading">
+          <FooterList title="Blog" links={blogLinks} headingId="blog-heading" />
+          <FooterList title="Produtos" links={productLinks} headingId="products-heading" />
         </section>
 
-        <section id="footer-subscribe" className="column-footer">
-          <h3>Inscreva-se</h3>
+        <section id="footer-subscribe" className="column-footer" aria-labelledby="subscribe-heading">
+          <h3 id="subscribe-heading">Inscreva-se</h3>
           <p>Adicione seu e-mail aqui:</p>
           <form id="input-group">
             <input
@@ -50,6 +51,7 @@ function Footer() {
               required
             />
             <button type="submit" aria-label="Enviar e-mail" >
+              <span className="visually-hidden">Subscribe</span>
               <FontAwesomeIcon icon={faEnvelope} size="lg" color="white" />
             </button>
           </form>

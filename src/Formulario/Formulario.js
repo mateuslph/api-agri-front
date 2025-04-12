@@ -1,81 +1,113 @@
-function Formulario({ botao, eventoTeclado, cadastrar,
-    obj, cancelar, remover, alterar }) {
-    return (
-        <div className="borda-formulario">
-            <div>
+import React, { useState } from 'react';
+
+function Formulario({ obj, cadastrar, cancelar, remover, alterar }) {
+  const [formData, setFormData] = useState({
+    id: obj.id || '',
+    nome: obj.nome || '',
+    preco: obj.preco || 0,
+    quantidade: obj.quantidade || 0,
+    descricao: obj.descricao || '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: name === 'preco' || name === 'quantidade' ? parseFloat(value) : value,
+    });
+  };
+
+  const isCreateOperation = !obj.id;
+
+  const handleCancel = () => {
+    cancelar();
+    setFormData({
+      id: '',
+      nome: '',
+      preco: 0,
+      quantidade: 0,
+      descricao: '',
+    });
+  };
+
+  return (
+    <div className="borda-formulario">
+      <div>
+        <div>
+          <form className="form">
+            <label htmlFor="nome" className="form-label d-flex justify-content-start">Nome:</label>
+            <input
+              type="text"
+              value={formData.nome}
+              onChange={handleInputChange}
+              name="nome"
+              placeholder="Nome"
+              className="form-control col-3"
+              maxLength="50"
+            />
+            <label htmlFor="preco" className="form-label d-flex justify-content-start">Preço:</label>
+            <input
+              type="number"
+              value={formData.preco}
+              onChange={handleInputChange}
+              name="preco"
+              className="form-control"
+              maxLength="50"
+            />
+            <label htmlFor="quantidade" className="form-label d-flex justify-content-start">Quantidade:</label>
+            <input
+              type="number"
+              value={formData.quantidade}
+              onChange={handleInputChange}
+              name="quantidade"
+              className="form-control"
+              maxLength="50"
+            />
+            <label htmlFor="descricao" className="form-label d-flex justify-content-start">Descrição:</label>
+            <input
+              type="text"
+              value={formData.descricao}
+              onChange={handleInputChange}
+              name="descricao"
+              placeholder="Descricao"
+              className="form-control"
+              maxLength="50"
+            />
+            {
+              isCreateOperation ? (
+                <input
+                  type="button"
+                  value="Cadastrar"
+                  onClick={() => cadastrar(formData)}
+                  className="btn btn-primary"
+                />
+              ) : (
                 <div>
-                    <form className="form">
-                    <label htmlFor="nome" className="form-label d-flex justify-content-start">Nome:</label>
-                        <input
-                            type="text"
-                            value={obj.nome}
-                            onChange={eventoTeclado}
-                            name="nome"
-                            placeholder="Nome"
-                            className="form-control col-3"
-                            maxLength="50"
-                        />
-                        <label htmlFor="preco" className="form-label d-flex justify-content-start">Preço:</label>
-                        <input
-                            type="number"
-                            value={obj.preco}
-                            onChange={eventoTeclado}
-                            name="preco"
-                            className="form-control"
-                            maxLength="50"
-                        />
-                        <label htmlFor="quantidade" className="form-label d-flex justify-content-start">Quantidade:</label>
-                        <input
-                            type="number"
-                            value={obj.quantidade}
-                            onChange={eventoTeclado}
-                            name="quantidade"
-                            className="form-control"
-                            maxLength="50"
-                        />
-                        <label htmlFor="descricao" className="form-label d-flex justify-content-start">Descrição:</label>                      
-                        <input
-                            type="text"
-                            value={obj.descricao}
-                            onChange={eventoTeclado}
-                            name="descricao"
-                            placeholder="Descricao"
-                            className="form-control"
-                            maxLength="50"
-                        />
-                        {
-                            botao
-                                ? <input
-                                    type="button"
-                                    value="Cadastrar"
-                                    onClick={cadastrar}
-                                    className="btn btn-primary" />
-                                : <div>
-                                    <input
-                                        type="button"
-                                        value="Alterar"
-                                        onClick={alterar}
-                                        className="btn btn-warning"
-                                    />
-                                    <input
-                                        type="button"
-                                        value="Remover"
-                                        onClick={remover}
-                                        className="btn btn-danger"
-                                    />
-                                    <input
-                                        type="button"
-                                        value="Cancelar"
-                                        onClick={cancelar}
-                                        className="btn btn-secondary"
-                                    />
-                                </div>
-                        }
-                    </form>
+                  <input
+                    type="button"
+                    value="Alterar"
+                    onClick={() => alterar(formData)}
+                    className="btn btn-warning"
+                  />
+                  <input
+                    type="button"
+                    value="Remover"
+                    onClick={() => remover(obj.id)}
+                    className="btn btn-danger"
+                  />
+                  <input
+                    type="button"
+                    value="Cancelar"
+                    onClick={handleCancel}
+                    className="btn btn-secondary"
+                  />
                 </div>
-            </div>
+              )
+            }
+          </form>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Formulario
