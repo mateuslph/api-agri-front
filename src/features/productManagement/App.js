@@ -23,6 +23,8 @@ function App() {
       <ProductList
         vetor={products}
         selecionar={selectProduct}
+        alterar={updateProduct}
+        remover={deleteProduct}
       />
       <Footer />
     </div>

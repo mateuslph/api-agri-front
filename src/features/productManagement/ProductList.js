@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProductList({ vetor, selecionar }) {
+function ProductList({ vetor, selecionar, alterar, remover }) {
   return (
     <div className="borda-tabela">
       <div>
@@ -13,6 +13,8 @@ function ProductList({ vetor, selecionar }) {
                 <th>Preco</th>
                 <th>Quantidade</th>
                 <th>Descricao</th>
+                <th>Alterar</th>
+                <th>Remover</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +26,18 @@ function ProductList({ vetor, selecionar }) {
                     <td>{obj.preco}</td>
                     <td>{obj.quantidade}</td>
                     <td>{obj.descricao}</td>
+                    <td>
+                      <button
+                        onClick={() => alterar(obj)}
+                        className="btn btn-warning"
+                      >Alterar</button>
+                    </td>
+                    <td>
+                      <button
+                         onClick={() => remover(obj)}
+                         className="btn btn-danger">Remover</button>
+                    </td>
+
                     <td>
                       <button
                         id="botao-selecionar"
