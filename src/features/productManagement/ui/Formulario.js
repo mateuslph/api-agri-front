@@ -51,7 +51,7 @@ function Formulario({ obj, cadastrar, alterar, remover, cancelar }) {
             <input type='number' step='0.01' value={quantidade} onChange={aoDigitarQuantidade} placeholder='Quantidade do produto' className='form-control' />
             <input type='text' value={descricao} onChange={aoDigitarDescricao} placeholder='Descrição do produto' className='form-control' />
 
-            <input type='button' value='Cadastrar' onClick={cadastrarOuAlterar} className='btn btn-primary' />
+            <input type='button' value='Cadastrar/Atualizar' onClick={cadastrarOuAlterar} className='btn btn-primary' />
             <input type='button' value='Remover' onClick={() => remover(obj.codigo)} className='btn btn-danger' disabled={!obj} />
             <input type='button' value='Cancelar' onClick={limparCampos} className='btn btn-secondary' />
         </div>
