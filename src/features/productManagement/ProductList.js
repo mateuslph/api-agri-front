@@ -1,3 +1,5 @@
+import React from 'react';
+
 function ProductList({ vetor, selecionar }) {
   return (
     <div className="borda-tabela">

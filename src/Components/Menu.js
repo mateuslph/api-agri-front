@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Menu.css';
+import './Menu.css'; // Update: The path is now relative within the Components directory
 
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);

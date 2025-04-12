@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import * as productService from '../services/productService';
+import * as productService from './productService';
 
 const useProductManagement = () => {
   // State variables

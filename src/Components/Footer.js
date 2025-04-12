@@ -1,9 +1,9 @@
 import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 import FooterList from './FooterList';
-import SocialMediaLink from '../SocialMediaLink';
+import SocialMediaLink from './SocialMediaLink';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
@@ -66,4 +66,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer
