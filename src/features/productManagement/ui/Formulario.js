@@ -36,7 +36,7 @@ function Formulario({ obj, cadastrar, alterar, remover, cancelar }) {
     };
 
     return (
-        <div className="container">
+        <div className="formulario-container">
             <input type='text' value={nome} onChange={aoDigitarNome} placeholder='Nome do produto' className='form-control' />
             <input type='text' value={marca} onChange={aoDigitarMarca} placeholder='Marca do produto' className='form-control' />
 
