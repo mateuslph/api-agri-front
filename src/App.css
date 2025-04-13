@@ -1,7 +1,24 @@
 /*product-management-container style*/
 .product-management-container {
+  position: relative;
   background-color: yellowgreen;
-  padding-top: 10px;
+  padding-top: 50px;
+}
+
+.error-overlay {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Ensure it's on top of other content */
+  padding: 10px 0; /* Optional: Add some padding */
+}
+
+.error-overlay p {
+  padding: 0;
+  margin: 0;
+  color: red;
+  text-align: center;
 }
 
 

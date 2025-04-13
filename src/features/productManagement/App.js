@@ -13,7 +13,13 @@ function App() {
     <div className="main-content">
       <Menu />
       <div className="product-management-container">
-      {error != null && <p style={{ padding: '50px 0 0', color: 'red', textAlign: 'center' }}>{error}</p>}
+
+        {error != null && (
+          <div className="error-overlay">
+            <p style={{ padding: '0', margin: '0', color: 'red', textAlign: 'center' }}>{error}</p>
+          </div>
+        )}
+
         <Formulario
           obj={selectedProduct}
           cadastrar={createProduct}
