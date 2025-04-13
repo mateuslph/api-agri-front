@@ -10,22 +10,24 @@ function App() {
   const { products, selectedProduct, isSubmitting, error, createProduct, updateProduct, deleteProduct, selectProduct, clearSelectedProduct } = useProductManagement();
 
   return (
-    <div>
+    <div className="main-content">
       <Menu />
-      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
-      <Formulario
-        obj={selectedProduct}
-        cadastrar={createProduct}
-        cancelar={clearSelectedProduct}
-        remover={deleteProduct}
-        alterar={updateProduct}
-      />
-      <ProductList
-        vetor={products}
-        selecionar={selectProduct}
-        alterar={updateProduct}
-        remover={deleteProduct}
-      />
+      <div className="product-management-container">
+      {error && <p style={{ padding: '50px 0 0', color: 'red', textAlign: 'center' }}>{error}</p>}
+        <Formulario
+          obj={selectedProduct}
+          cadastrar={createProduct}
+          cancelar={clearSelectedProduct}
+          remover={deleteProduct}
+          alterar={updateProduct}
+        />
+        <ProductList
+          vetor={products}
+          selecionar={selectProduct}
+          alterar={updateProduct}
+          remover={deleteProduct}
+        />
+      </div>
       <Footer />
     </div>
   );
