@@ -1,9 +1,9 @@
 :root {
-  --color-neutral-0: #020202; /* Black - Background */
+  --color-neutral-0: #f0f0f0; /* Light Gray - Background */
   --color-neutral-10: #2e4a62; /* Navy Blue - Darkest Blue */
   --color-neutral-20: #3a5f7f; /* Medium Blue */
   --color-neutral-30: #779ecb; /* Light Blue - Text, Links */
-  --color-neutral-40: #ffffff; /* White - Text on Dark Backgrounds */
+  --color-neutral-40: #444444; /* Dark Gray - Text on Dark Backgrounds */
   --color-button: #FFA500; /* Orange - Button color */
 
 }
