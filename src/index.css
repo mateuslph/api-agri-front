@@ -1,3 +1,13 @@
+:root {
+  --color-neutral-0: #f0f0f0; /* Light Gray - Background */
+  --color-neutral-10: #2e4a62; /* Navy Blue - Darkest Blue */
+  --color-neutral-20: #3a5f7f; /* Medium Blue */
+  --color-neutral-30: #779ecb; /* Light Blue - Text, Links */
+  --color-neutral-40: #ffffff; /* White - Text on Dark Backgrounds */
+  --color-button: #FFA500; /* Orange - Button color */
+
+}
+
 body {
   background-color: rgb(0, 30, 255);
   margin: 0;
@@ -6,6 +16,16 @@ body {
   line-height: 1.6; /* Set default line height */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    
+  color: var(--color-neutral-40);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 1px;
 }
 
 
